@@ -20,7 +20,8 @@ public class SolrJavaIntegrationTest {
     public void setUp() throws Exception {
 
         solrJavaIntegration = new SolrJavaIntegration("http://localhost:8983/solr/films");
-        solrJavaIntegration.addSolrDocument("123456", "Django unchained", "quentin tarantino", "2017-10-15");
+        String[] djangoCategory = {"drama","action","thriller"};
+        solrJavaIntegration.addSolrDocument("123456", "Django unchained", "quentin tarantino", "2017-10-15", djangoCategory);
     }
 
     @Test
@@ -69,8 +70,8 @@ public class SolrJavaIntegrationTest {
 
     @Test
     public void whenAddBean_thenVerifyAddedByQuery() throws SolrServerException, IOException {
-
-        Film film = new Film("555", "IT", "steven spielberg");
+        String[] ITCategory = {"horror", "mystery", "drama"};
+        Film film = new Film("555", "IT", "steven spielberg", ITCategory );
         solrJavaIntegration.addProductBean(film);
 
         SolrDocument doc = solrJavaIntegration.getSolrClient().getById("555");
@@ -78,7 +79,7 @@ public class SolrJavaIntegrationTest {
         assertEquals("IT", (String) doc.getFieldValue("name"));
     }
 
-   /* @Test
+    @Test
     public void whenDeleteById_thenVerifyDeleted() throws SolrServerException, IOException {
 
         solrJavaIntegration.deleteSolrDocumentById("123456");
@@ -104,5 +105,5 @@ public class SolrJavaIntegrationTest {
 
         SolrDocumentList docList = response.getResults();
         assertEquals(0, docList.getNumFound());
-    }*/
+    }
 }

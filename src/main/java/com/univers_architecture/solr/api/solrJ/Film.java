@@ -1,6 +1,10 @@
 package com.univers_architecture.solr.api.solrJ;
 
-import java.util.Date;
+
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.apache.solr.client.solrj.beans.Field;
 
@@ -10,12 +14,15 @@ public class Film {
     String directed_by;
     String name;
     String published_date;
-
-    public Film(String id, String name, String directed_by) {
+    List<String> category = new ArrayList<String>();
+    
+    public Film(String id, String name, String directed_by,String[] category) {
         super();
         this.id = id;
         this.name = name;
         this.directed_by = directed_by;
+        this.category = Arrays.asList(category);
+        
     }
 
     public String getId() {
@@ -49,9 +56,20 @@ public class Film {
 		return published_date;
 	}
     @Field("published_date")
-	public void setPublished_date(String published_date) {
+	protected void setPublished_date(String published_date) {
 		this.published_date = published_date;
 	}
 
+	public List<String> getCategory() {
+		return category;
+	}
+    @Field("category")
+	protected void setCategory(List<String> category) {
+		this.category = category;
+	}
+
+	
+
+	
    
 }

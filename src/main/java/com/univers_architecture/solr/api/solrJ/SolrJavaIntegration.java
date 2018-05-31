@@ -1,6 +1,8 @@
 package com.univers_architecture.solr.api.solrJ;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
@@ -23,13 +25,15 @@ public class SolrJavaIntegration {
         solrClient.commit();
     }
 
-    public void addSolrDocument(String documentId, String name, String directedBy, String publishedDate) throws SolrServerException, IOException {
-
-        SolrInputDocument document = new SolrInputDocument();
+    public void addSolrDocument(String documentId, String name, String directedBy, String publishedDate, String[] category) throws SolrServerException, IOException {
+    	
+    	ArrayList<String> values = new ArrayList<String>(Arrays.asList(category));
+    	SolrInputDocument document = new SolrInputDocument();
         document.addField("id", documentId);
         document.addField("name", name);
         document.addField("directed_by", directedBy);
         document.addField("published_date", publishedDate);
+        document.addField("category", values );
         solrClient.add(document);
         solrClient.commit();
     }
