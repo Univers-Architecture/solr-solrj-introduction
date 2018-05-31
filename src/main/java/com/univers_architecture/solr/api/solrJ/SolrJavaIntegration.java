@@ -17,18 +17,19 @@ public class SolrJavaIntegration {
         solrClient.setParser(new XMLResponseParser());
     }
 
-    public void addProductBean(Film pBean) throws IOException, SolrServerException {
+    public void addProductBean(Film fBean) throws IOException, SolrServerException {
 
-        solrClient.addBean(pBean);
+        solrClient.addBean(fBean);
         solrClient.commit();
     }
 
-    public void addSolrDocument(String documentId, String itemName, String itemPrice) throws SolrServerException, IOException {
+    public void addSolrDocument(String documentId, String name, String directedBy, String publishedDate) throws SolrServerException, IOException {
 
         SolrInputDocument document = new SolrInputDocument();
         document.addField("id", documentId);
-        document.addField("name", itemName);
-        document.addField("directed_by", itemPrice);
+        document.addField("name", name);
+        document.addField("directed_by", directedBy);
+        document.addField("published_date", publishedDate);
         solrClient.add(document);
         solrClient.commit();
     }

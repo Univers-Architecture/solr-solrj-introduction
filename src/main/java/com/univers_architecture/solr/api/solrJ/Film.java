@@ -1,5 +1,7 @@
 package com.univers_architecture.solr.api.solrJ;
 
+import java.util.Date;
+
 import org.apache.solr.client.solrj.beans.Field;
 
 public class Film {
@@ -7,6 +9,7 @@ public class Film {
     String id;
     String directed_by;
     String name;
+    String published_date;
 
     public Film(String id, String name, String directed_by) {
         super();
@@ -40,6 +43,14 @@ public class Film {
     @Field("directed_by")
 	protected void setDirected_by(String directed_by) {
 		this.directed_by = directed_by;
+	}
+
+	public String getPublished_date() {
+		return published_date;
+	}
+    @Field("published_date")
+	public void setPublished_date(String published_date) {
+		this.published_date = published_date;
 	}
 
    
