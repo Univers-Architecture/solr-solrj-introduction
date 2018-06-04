@@ -9,6 +9,8 @@ import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.impl.XMLResponseParser;
 import org.apache.solr.common.SolrInputDocument;
 
+import com.univers_architecture.solr.api.solrJ.model.Film;
+
 public class SolrJavaIntegration {
 
     private HttpSolrClient solrClient;

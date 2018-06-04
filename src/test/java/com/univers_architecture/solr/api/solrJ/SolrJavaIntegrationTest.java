@@ -12,6 +12,8 @@ import org.apache.solr.common.SolrDocumentList;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.univers_architecture.solr.api.solrJ.model.Film;
+
 public class SolrJavaIntegrationTest {
 
     private SolrJavaIntegration solrJavaIntegration;

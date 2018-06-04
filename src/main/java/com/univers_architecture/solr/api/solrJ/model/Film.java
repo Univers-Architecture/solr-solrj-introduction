@@ -1,4 +1,4 @@
-package com.univers_architecture.solr.api.solrJ;
+package com.univers_architecture.solr.api.solrJ.model;
 
 
 
@@ -15,6 +15,11 @@ public class Film {
     String name;
     String published_date;
     List<String> category = new ArrayList<String>();
+    float revenue;
+    
+    public Film() {
+		super();
+	}
     
     public Film(String id, String name, String directed_by,String[] category) {
         super();
@@ -30,7 +35,7 @@ public class Film {
     }
 
     @Field("id")
-    protected void setId(String id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,7 +44,7 @@ public class Film {
     }
 
     @Field("name")
-    protected void setName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -48,7 +53,7 @@ public class Film {
 	}
 	
     @Field("directed_by")
-	protected void setDirected_by(String directed_by) {
+	public void setDirected_by(String directed_by) {
 		this.directed_by = directed_by;
 	}
 
@@ -56,7 +61,7 @@ public class Film {
 		return published_date;
 	}
     @Field("published_date")
-	protected void setPublished_date(String published_date) {
+	public void setPublished_date(String published_date) {
 		this.published_date = published_date;
 	}
 
@@ -64,9 +69,19 @@ public class Film {
 		return category;
 	}
     @Field("category")
-	protected void setCategory(List<String> category) {
+	public void setCategory(List<String> category) {
 		this.category = category;
 	}
+
+	public float getRevenue() {
+		return revenue;
+	}
+    @Field("revenue")
+	public void setRevenue(float revenue) {
+		this.revenue = revenue;
+	}
+
+	
 
 	
 
